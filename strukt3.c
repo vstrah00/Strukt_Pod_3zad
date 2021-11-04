@@ -218,7 +218,7 @@ int ReadListFromFile(person* head)
     person* last=NULL;
     person* temp=NULL;
     char fileName[40]={0};
-    char chr='\0';
+    char scan[1024]={0};
     int count=0;
     int num=0;
 
@@ -236,13 +236,9 @@ int ReadListFromFile(person* head)
         return -1;
     }
 
-    chr=fgetc(fp);
-    while(chr!=EOF){
-        if(chr=='\n'){
-            count=count+1;
+    while(fgets(scan, 1024, fp)!=NULL){
+            count++;
         }
-        chr=fgetc(fp);
-    }
     rewind(fp);
 
     while(num!=count){
